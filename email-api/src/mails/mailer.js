@@ -3,8 +3,8 @@ import { env } from '../config/env.js'
 
 const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
-    port: 587,
-    secure: false,
+    port: 465,
+    secure: true,
     //service: "gmail",
     auth: {
         user: env.EMAIL,
@@ -15,10 +15,10 @@ const transporter = nodemailer.createTransport({
 export const sendEmail = async (options) => {
     const mailOptions = { from: env.EMAIL, ...options }
     try {
-    await transporter.sendMail(mailOptions)
-    console.log("Email sent:", options.to)
+    const info = await transporter.sendMail(mailOptions)
+    console.log("Email sent:", info.response)
   } catch (err) {
-    console.error("Error sending email:", err)
+    console.error("SMTP error", err.code, err.message)
     throw err
   }
 }
