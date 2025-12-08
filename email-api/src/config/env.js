@@ -6,6 +6,7 @@ export const env = {
   DATABASE_URL: process.env.DATABASE_URL || '',
   EMAIL: process.env.EMAIL || '',
   GOOGLE_APP_PASSWORD: process.env.GOOGLE_APP_PASSWORD || '',
+  SENDGRID_API_KEY: process.env.SENDGRID_API_KEY || '',
   SECRET_KEY: process.env.SECRET_KEY || '',
   EXPIRE_IN: process.env.EXPIRE_IN || '1d'
 }
