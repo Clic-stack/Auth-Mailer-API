@@ -13,7 +13,7 @@ This project demonstrates secure user authentication, email verification workflo
 ---
 
 ### 📄 API Documentation: Postman Collection
-🔗 https://clioanahi-4690257.postman.co/documentation/48309056-89b60f1b-5101-40d8-82fa-027d917e66f3/publish?workspaceId=e6eb16e2-0724-445b-bc16-efaab48f6469&authFlowId=f31427f2-2c7f-4fc9-a82f-4156112a6e9e
+🔗 https://documenter.getpostman.com/view/48309056/2sB3dQwAK2
 
 ---
 
