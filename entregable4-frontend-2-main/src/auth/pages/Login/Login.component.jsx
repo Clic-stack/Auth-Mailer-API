@@ -36,14 +36,6 @@ const Login = () => {
           message: "Unexpected error, please try again",
         }))
       }
-
-    /*catch (error) {
-      if(error.response.status === 401) {
-        dispatch(showNotification({
-          variant: "danger",
-          message: "Invalid credentials",
-        }));
-      }*/
     } finally { setIsLoading(false); }
   }
 

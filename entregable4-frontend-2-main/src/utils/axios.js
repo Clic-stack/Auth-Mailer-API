@@ -12,10 +12,6 @@ axios.interceptors.request.use(function (config) {
         config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
-
-    /*if(config.headers?.Authorization) return config;
-    config.headers.Authorization =  `Bearer ${token}`;
-    return config;*/
 });
 
 axios.interceptors.response.use((res) => {
