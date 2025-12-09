@@ -8,7 +8,7 @@ usersRouter.post('/', create)
 usersRouter.post('/login', login)
 usersRouter.post('/reset_password', resetPasswordRequest)
 usersRouter.post('/reset_password/:code', resetPasswordConfirm)
-usersRouter.get('/verify/:code', verifyEmail)
+usersRouter.get('/verify_email/:code', verifyEmail)
 
 
 //Rutas protegidas:
