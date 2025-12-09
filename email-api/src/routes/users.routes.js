@@ -3,22 +3,19 @@ import {Router} from 'express'
 import { auth } from '../middlewares/auth.js'
 
 const usersRouter = Router()
-
-usersRouter.route('/')
-    .get(auth, getAll)
-    .post(create)
-
+// Rutas públicas:
+usersRouter.post('/', create)
 usersRouter.post('/login', login)
-
 usersRouter.post('/reset_password', resetPasswordRequest)
 usersRouter.post('/reset_password/:code', resetPasswordConfirm)
-
-usersRouter.get('/me', auth, userLogged)
-
 usersRouter.get('/verify/:code', verifyEmail)
 
+
+//Rutas protegidas:
 usersRouter.use(auth)
-usersRouter.route('/:id', auth) 
+usersRouter.get('/', getAll)
+usersRouter.get('/me', userLogged)
+usersRouter.route('/:id')
     .get(getOne)
     .delete(remove)
     .put(update)
