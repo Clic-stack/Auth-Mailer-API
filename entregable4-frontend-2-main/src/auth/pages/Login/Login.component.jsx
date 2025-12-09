@@ -24,12 +24,26 @@ const Login = () => {
       }));
       navigate('/users/all_users');
     } catch (error) {
+      const status = error.response?.status
+      if (status === 401) {
+        dispatch(showNotification({
+          variant: "danger",
+          message: "Invalid credentials",
+        }))
+      } else {
+        dispatch(showNotification({
+          variant: "danger",
+          message: "Unexpected error, please try again",
+        }))
+      }
+
+    /*catch (error) {
       if(error.response.status === 401) {
         dispatch(showNotification({
           variant: "danger",
           message: "Invalid credentials",
         }));
-      }
+      }*/
     } finally { setIsLoading(false); }
   }
 
@@ -49,7 +63,7 @@ const Login = () => {
           </Form.Text>
         </Form.Group>
 
-        <Form.Group className="mb-5" controlId="passworrd">
+        <Form.Group className="mb-5" controlId="password">
           <Form.Label>Password</Form.Label>
           <Form.Control 
             type="password" 

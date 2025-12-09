@@ -8,9 +8,14 @@ const axios = axiosOriginal.create({
 
 axios.interceptors.request.use(function (config) {
     const token = store.getState().auth.token;
-    if(config.headers?.Authorization) return config;
-    config.headers.Authorization =  `Bearer ${token}`;
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+    }
     return config;
+
+    /*if(config.headers?.Authorization) return config;
+    config.headers.Authorization =  `Bearer ${token}`;
+    return config;*/
 });
 
 axios.interceptors.response.use((res) => {
