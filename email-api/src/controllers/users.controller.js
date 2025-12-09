@@ -90,7 +90,7 @@ export const remove = catchError(async(req, res) => {
 
 export const update = catchError(async(req, res) => {
     const { id } = req.params
-    const { password, ...rest } = req.body
+    const { password, isVerified, ...rest } = req.body
     const result = await User.update(
         { ...rest },
         { where: {id}, returning: true }
