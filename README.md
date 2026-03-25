@@ -88,14 +88,14 @@ This project was designed to:
 ## 📁 API Endpoints
 
 ### Public Endpoints
-| Método | Endpoint                | Función |
+| Method | Endpoint                | Function |
 |--------|-------------------------|---------|
 | POST   | `/users`                | Create user and send verification email |
 | GET    | `/users/verify/:code`   | Verify user email with code |
 | POST   | `/users/login`          | Login with email & password |
 
 ### Protected Endpoints
-| Método | Endpoint         | Función |
+| Method | Endpoint         | Function |
 |--------|------------------|---------|
 | GET    | `/users/me`      | Return logged-in user |
 | GET    | `/users`         | Return all users |
@@ -104,7 +104,7 @@ This project was designed to:
 | DELETE | `/users/:id`     | Delete user by id |
 
 ### Optional Challenge: Password Reset
-| Método | Endpoint                       | Función |
+| Method | Endpoint                       | Function |
 |--------|--------------------------------|---------|
 | POST   | `/users/reset_password`        | Send reset code to user email |
 | POST   | `/users/reset_password/:code`  | Reset password with code |
