@@ -3,6 +3,7 @@ import cors from 'cors'
 import helmet from 'helmet'
 import morgan from 'morgan'
 import routes from './routes/index.js'
+import apiLimiter from './middlewares/rateLimiter.js'
 import { errorHandler } from './middlewares/errorHandler.js'
 import { env } from './config/env.js'
 
@@ -15,6 +16,9 @@ app.use(helmet())
 app.use(morgan('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+
+// Se aplica límite de peticiones antes de las rutas
+app.use(apiLimiter)
 
 // Routes
 app.use('/', routes)
