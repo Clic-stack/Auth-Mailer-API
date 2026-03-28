@@ -1,15 +1,15 @@
 import { Sequelize } from 'sequelize'
 import { env } from '../config/env.js'
 
-const sequelize = new Sequelize(env.DATABASE_URL, {
+const sequelize = new Sequelize(env.DATABASE_URL || 'postgres://localhost:5432/test_db', {
   dialect: 'postgres',
   logging: false,
-  dialectOptions: {
+  dialectOptions: env.NODE_ENV === 'production' ? {
     ssl: {
       require: true,
       rejectUnauthorized: false
     }
-  }
+  } : {} // En desarrollo/test local a veces no necesitas SSL
 })
 
 export const connectDB = async () => {
