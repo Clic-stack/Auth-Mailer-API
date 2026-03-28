@@ -1,0 +1,288 @@
+{
+  "info": {
+    "_postman_id": "89b60f1b-5101-40d8-82fa-027d917e66f3",
+    "name": "Auth-Mailer-API",
+    "description": "# 📑 Auth-Mailer-API – Postman Documentation\n\nAuth-Mailer-API is a RESTful service that provides **user authentication** and **email sending capabilities**. This documentation is designed for Postman to help developers test, explore, and integrate the API quickly.\n\n## 🔑 Authentication\n\n- **Type:** JWT (JSON Web Token)\n    \n- CódigoAuthorization: Bearer\n    \n\n## 📬 Base URL\n\nCódigo\n\n```\nhttps://auth-mailer-api.onrender.com\n\n ```\n\n## ⚠️ Error Responses\n\n- **400 Bad Request:** Missing or invalid parameters.\n    \n- **401 Unauthorized:** Invalid or missing token.\n    \n- **404 Not Found:** Resource not found.\n    \n- **500 Internal Server Error:** Unexpected server issue.\n    \n\n## 🛠️ Postman Setup\n\n1. Import this collection into Postman.\n    \n2. Set the **Base URL** as an environment variable (`{{base_url}}`).\n    \n3. Add an **Authorization** header with your JWT token.\n    \n4. Test endpoints individually or chain them in workflows.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "48309056",
+    "_collection_link": "https://go.postman.co/collection/48309056-89b60f1b-5101-40d8-82fa-027d917e66f3?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMiwiZW1haWwiOiJjbGlvYW5haGlAZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiQ2xpbyIsImxhc3ROYW1lIjoiU2FsZ2FkbyIsImNvdW50cnkiOiJNZXhpY28iLCJpbWFnZSI6Imh0dHBzOi8veHNnYW1lcy5jby9yYW5kb211c2Vycy9hc3NldHMvYXZhdGFycy9mZW1hbGUvMTQuanBnIiwiaXNWZXJpZmllZCI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyNS0xMi0wOVQyMTo0MzoxNC41NjBaIiwidXBkYXRlZEF0IjoiMjAyNS0xMi0wOVQyMTo0NTozNS40NDJaIn0sImlhdCI6MTc3Mzg2ODIzNywiZXhwIjoxNzczOTU0NjM3fQ._hiSuc4zyg8FFEugbzzP8sADKARpyFdqnf7U51D5raY",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/users",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "users"
+              ]
+            },
+            "description": "**Description:** Retrieves a list of all registered users.\n\n**Correct Response:**\n\n``` json\n[\n    {\n        \"id\": 6,\n        \"email\": \"clioanahisalgado@gmail.com\",\n        \"firstName\": \"Anahi\",\n        \"lastName\": \"Aguayo\",\n        \"country\": \"Mexico\",\n        \"image\": \"https://xsgames.co/randomusers/assets/avatars/female/14.jpg\",\n        \"isVerified\": true,\n        \"createdAt\": \"2025-12-09T01:41:39.255Z\",\n        \"updatedAt\": \"2025-12-09T19:57:22.649Z\"\n    }\n]\n\n ```"
+          },
+          "response": []
+        },
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"clioanahi@gmail1.com\",\r\n    \"password\": \"123456\",\r\n    \"firstName\": \"Clio\",\r\n    \"lastName\": \"Salgado\",\r\n    \"country\": \"Mexico\",\r\n    \"image\": \"https://xsgames.co/randomusers/assets/avatars/female/14.jpg\",\r\n    \"frontBaseUrl\": \"https://auth-mailer-api.netlify.app/auth/verify_email\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/users",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "users"
+              ]
+            },
+            "description": "**Description:** Create a new user into database.\n\n**Correct Response:**\n\n``` json\n{\n    \"message\": \"User created successfully!\",\n    \"user\": {\n        \"isVerified\": false,\n        \"id\": 13,\n        \"email\": \"clioanahi@gmail.com\",\n        \"firstName\": \"Clio\",\n        \"lastName\": \"Salgado\",\n        \"country\": \"Mexico\",\n        \"image\": \"https://xsgames.co/randomusers/assets/avatars/female/14.jpg\",\n        \"updatedAt\": \"2025-12-09T22:29:32.222Z\",\n        \"createdAt\": \"2025-12-09T22:29:32.222Z\"\n    }\n}\n\n ```"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete User",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMiwiZW1haWwiOiJjbGlvYW5haGlAZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiQ2xpbyIsImxhc3ROYW1lIjoiU2FsZ2FkbyIsImNvdW50cnkiOiJNZXhpY28iLCJpbWFnZSI6Imh0dHBzOi8veHNnYW1lcy5jby9yYW5kb211c2Vycy9hc3NldHMvYXZhdGFycy9mZW1hbGUvMTQuanBnIiwiaXNWZXJpZmllZCI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyNS0xMi0wOVQyMTo0MzoxNC41NjBaIiwidXBkYXRlZEF0IjoiMjAyNS0xMi0wOVQyMTo0NTozNS40NDJaIn0sImlhdCI6MTc3Mzg2ODIzNywiZXhwIjoxNzczOTU0NjM3fQ._hiSuc4zyg8FFEugbzzP8sADKARpyFdqnf7U51D5raY",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/users/16",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "users",
+                "16"
+              ]
+            },
+            "description": "**Description:** Delete one user by ID.\n\n**Correct Response:**\n\n<img src=\"https://content.pstmn.io/2ec227d8-cd81-4989-ade7-8c81e8e2404d/aW1hZ2UucG5n\" alt=\"\" height=\"759\" width=\"1359\">"
+          },
+          "response": []
+        },
+        {
+          "name": "Verify Email",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{BASE_URL}}/users/verify/98318bf65c21ea227d75456522a642aea63b515273e98fe41624f6c8859bb6bc",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "users",
+                "verify",
+                "98318bf65c21ea227d75456522a642aea63b515273e98fe41624f6c8859bb6bc"
+              ]
+            },
+            "description": "**Description:** Verify the email user.\n\n**Correct Response:**\n\n<img src=\"https://content.pstmn.io/2b73aaa1-5f6c-4629-98a6-2acef2564f2e/aW1hZ2UucG5n\" width=\"1364\" height=\"750\">"
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"clioanahi@gmail.com\",\r\n    \"password\": \"789101\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/users/login",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "users",
+                "login"
+              ]
+            },
+            "description": "**Description:** Login User into API.\n\n**Correct Response:**\n\n``` json\n{\n    \"message\": \"Correct Login\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMiwiZW1haWwiOiJjbGlvYW5haGlAZ21haWwuY29tIiwiZmlyc3ROYW1lIjoiQ2xpbyIsImxhc3ROYW1lIjoiU2FsZ2FkbyIsImNvdW50cnkiOiJNZXhpY28iLCJpbWFnZSI6Imh0dHBzOi8veHNnYW1lcy5jby9yYW5kb211c2Vycy9hc3NldHMvYXZhdGFycy9mZW1hbGUvMTQuanBnIiwiaXNWZXJpZmllZCI6dHJ1ZSwiY3JlYXRlZEF0IjoiMjAyNS0xMi0wOVQyMTo0MzoxNC41NjBaIiwidXBkYXRlZEF0IjoiMjAyNS0xMi0wOVQyMTo0NTozNS40NDJaIn0sImlhdCI6MTc2NTMxOTk2MCwiZXhwIjoxNzY1NDA2MzYwfQ.NsSCJeoGFSle8-a7mNhpFWhkvqpdLYJKaKbdnPo48f4\",\n    \"user\": {\n        \"id\": 12,\n        \"email\": \"clioanahi@gmail.com\",\n        \"firstName\": \"Clio\",\n        \"lastName\": \"Salgado\",\n        \"country\": \"Mexico\",\n        \"image\": \"https://xsgames.co/randomusers/assets/avatars/female/14.jpg\",\n        \"isVerified\": true,\n        \"createdAt\": \"2025-12-09T21:43:14.560Z\",\n        \"updatedAt\": \"2025-12-09T21:45:35.442Z\"\n    }\n}\n\n ```"
+          },
+          "response": []
+        },
+        {
+          "name": "Get One User",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjozLCJlbWFpbCI6Inp5YmFyaXRlQHByb3Rvbi5tZSIsImZpcnN0TmFtZSI6IkNhc3RvbGl0byIsImxhc3ROYW1lIjoiQmIiLCJjb3VudHJ5IjoiTcOpeGljbyIsImltYWdlIjoiaHR0cHM6Ly94c2dhbWVzLmNvL3JhbmRvbXVzZXJzL2Fzc2V0cy9hdmF0YXJzL21hbGUvNy5qcGciLCJpc1ZlcmlmaWVkIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDI1LTEyLTA5VDAxOjIyOjU3Ljk1OFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTEyLTA5VDAxOjIzOjQxLjI2MloifSwiaWF0IjoxNzY1MjQzNjA2LCJleHAiOjE3NjUzMzAwMDZ9.Ld3lKkUe-9P3C7vCiVH076nM_GtVIC_ct1EzGyBpWHQ",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{BASE_URL}}/users/3",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "users",
+                "3"
+              ]
+            },
+            "description": "**Description:** Get One User by ID.\n\n**Correct Response:**\n\n``` json\n{\n    \"id\": 3,\n    \"email\": \"zybarite@proton.me\",\n    \"firstName\": \"Israel\",\n    \"lastName\": \"Ramírez\",\n    \"country\": \"Mexico\",\n    \"image\": \"https://xsgames.co/randomusers/assets/avatars/male/7.jpg\",\n    \"isVerified\": true,\n    \"createdAt\": \"2025-12-09T01:22:57.958Z\",\n    \"updatedAt\": \"2025-12-09T21:46:09.101Z\"\n}\n\n ```"
+          },
+          "response": []
+        },
+        {
+          "name": "Reset Password",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"clioanahisalgado@gmail.com\",\r\n  \"frontBaseUrl\": \"https://auth-mailer-api.netlify.app/auth/reset_password\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/users/reset_password",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "users",
+                "reset_password"
+              ]
+            },
+            "description": "**Description:** Reset user password.\n\n**Correct Response:**\n\n<img src=\"https://content.pstmn.io/81e24b41-4cb4-46b2-b343-be7cbb2127d0/aW1hZ2UucG5n\" width=\"931\" height=\"228\">"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Password",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"password\": \"789101\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/users/reset_password/f9eb2f39d7920052f89d9916be0fc10bacc4bd50fc72b1d03c8b5737ced363c4",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "users",
+                "reset_password",
+                "f9eb2f39d7920052f89d9916be0fc10bacc4bd50fc72b1d03c8b5737ced363c4"
+              ]
+            },
+            "description": "**Description:** Update user password into db.\n\n**Correct Response:**\n\n<img src=\"https://content.pstmn.io/8192e454-fbc7-49d3-b03f-a67bd09aee3f/aW1hZ2UucG5n\" width=\"1360\" height=\"765\">"
+          },
+          "response": []
+        },
+        {
+          "name": "Update User",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjozLCJlbWFpbCI6Inp5YmFyaXRlQHByb3Rvbi5tZSIsImZpcnN0TmFtZSI6IkNhc3RvbGl0byIsImxhc3ROYW1lIjoiQmIiLCJjb3VudHJ5IjoiTcOpeGljbyIsImltYWdlIjoiaHR0cHM6Ly94c2dhbWVzLmNvL3JhbmRvbXVzZXJzL2Fzc2V0cy9hdmF0YXJzL21hbGUvNy5qcGciLCJpc1ZlcmlmaWVkIjp0cnVlLCJjcmVhdGVkQXQiOiIyMDI1LTEyLTA5VDAxOjIyOjU3Ljk1OFoiLCJ1cGRhdGVkQXQiOiIyMDI1LTEyLTA5VDAxOjIzOjQxLjI2MloifSwiaWF0IjoxNzY1MjQzNjA2LCJleHAiOjE3NjUzMzAwMDZ9.Ld3lKkUe-9P3C7vCiVH076nM_GtVIC_ct1EzGyBpWHQ",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"zybarite@proton.me\",\r\n    \"firstName\": \"Israel\",\r\n    \"lastName\": \"Ramírez\",\r\n    \"country\": \"Mexico\",\r\n    \"image\": \"https://xsgames.co/randomusers/assets/avatars/male/7.jpg\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{BASE_URL}}/users/3",
+              "host": [
+                "{{BASE_URL}}"
+              ],
+              "path": [
+                "users",
+                "3"
+              ]
+            },
+            "description": "**Description:** Update user into db.\n\n**Correct Response:**\n\n<img src=\"https://content.pstmn.io/18533bbd-5a11-46e6-a88b-fb10f8f19864/aW1hZ2UucG5n\" width=\"941\" height=\"305\">"
+          },
+          "response": []
+        }
+      ],
+      "description": "The **Users** folder contains endpoints related to user management in the Auth-Mailer-API. These endpoints allow developers to register, authenticate, and manage users within the system.\n\n### 📌 Endpoints\n\n| Method | Endpoint | Description | **Authorization** |\n| --- | --- | --- | --- |\n| GET | `/users` | Get all users | Token is Required |\n| GET | `/users/:id` | Get a single user by ID | Token is Required |\n| POST | `/users` | Create a new user | Not Required |\n| PUT | `/users/:id` | Update an existing user | Token is required |\n| DELETE | `/users/:id` | Delete an user by ID | Token is required |\n| GET | `/users/verify/:code` | Verify user email with code from email_codes | Not Required |\n| POST | `/users/login` | Login User | Not Required |\n| POST | `/users/reset_password` | Resest user password | Not Required |\n| POST | `/users/reset_password/:code` | Update password with code generated from email_codes | Not required |"
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "BASE_URL",
+      "value": "https://auth-mailer-api.onrender.com"
+    }
+  ]
+}
