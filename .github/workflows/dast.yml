@@ -1,0 +1,22 @@
+name: "SecOps: DAST Dynamic Scan"
+
+on:
+  push:
+    branches: [ main, master ]
+  # Se ejecuta automáticamente todos los lunes para asegurar que el servidor sigue seguro
+  schedule:
+    - cron: '0 0 * * 1' 
+
+jobs:
+  zap_scan:
+    runs-on: ubuntu-latest
+    name: Scan Live API (Render)
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: ZAP API Scan
+        uses: zaproxy/action-api-scan@v0.7.0
+        with:
+          target: 'https://auth-mailer-api.onrender.com'
+          format: openapi
