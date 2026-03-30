@@ -1,8 +1,8 @@
-## 📧 Fullstack Project: Authentication & Email Verification <br/>  <br/> <p align="right">[![SecOps: CodeQL Analysis](https://img.shields.io/badge/Analysis-CodeQL--SecOps-F5F5F5?style=for-the-badge&logo=postgresql&logoColor=black&labelColor=A9A9A9)](https://github.com/Clic-stack/Auth-Mailer-API/actions)</p> <p align="right">[![Real-World Integration Tests](https://img.shields.io/badge/Tests-Real--World%20Integration-FFD700?style=for-the-badge&logo=postgresql&logoColor=FFD700&labelColor=010B13)](https://github.com/Clic-stack/Auth-Mailer-API/actions)</p> <p align="right">[![Continuous Integration (CI/CD) Tests](https://img.shields.io/badge/Tests-CI--Continuous%20Integration-FFFFFF?style=for-the-badge&logo=postgresql&logoColor=003366&labelColor=FFFDD0)](https://github.com/Clic-stack/Auth-Mailer-API/actions)</p> 
+## <p align="center">📧 Fullstack Project: Authentication & Email Verification </p> <br/> <p align="center">[![SecOps: CodeQL Analysis](https://img.shields.io/badge/Analysis-CodeQL--SecOps-F5F5F5?style=for-the-badge&logo=postgresql&logoColor=black&labelColor=A9A9A9)](https://github.com/Clic-stack/Auth-Mailer-API/actions)[![SecOps: DAST Dynamic Scan](https://img.shields.io/badge/Scan-DAST%20Dynamic--SecOps-003366?style=for-the-badge&logo=postgresql&logoColor=FFFFFF&labelColor=000033)](https://github.com/Clic-stack/Auth-Mailer-API/actions) [![Real-World Integration Tests](https://img.shields.io/badge/Tests-Real--World%20Integration-FFD700?style=for-the-badge&logo=postgresql&logoColor=FFD700&labelColor=010B13)](https://github.com/Clic-stack/Auth-Mailer-API/actions) [![API Contract: Postman Validation](https://img.shields.io/badge/Validation-API%20Contract--Postman-50C878?style=for-the-badge&logo=postgresql&logoColor=E5E5E5&labelColor=006400)](https://github.com/Clic-stack/Auth-Mailer-API/actions)[![Continuous Integration (CI/CD) Tests](https://img.shields.io/badge/Tests-CI--Continuous%20Integration-FFFFFF?style=for-the-badge&logo=postgresql&logoColor=003366&labelColor=FFFDD0)](https://github.com/Clic-stack/Auth-Mailer-API/actions)
+</p> 
 
-
-> [!TIP]
-> Quick Setup Note: This project includes enviroment variables and configures instructions into .env.example file for development and testing environments, (remember all enviroment values is with your credentials). This facilitates rapid deployment and ensures the test suite runs out-of-the-box without extra security overhead.
+> [!TIP] <p align="justify">
+> Quick Setup Note: This project includes environment variables and configures instructions into .env.example file for development and testing environments, (remember all environment values must be filled with your credentials). This ensures a seamless local setup and allows the test suite to run out-of-the-box without extra security overhead.
 [![Auth Mailer API CI/CD](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/ci.yml/badge.svg?branch=main&event=push)](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/ci.yml)
 [![SecOps: CodeQL Analysis](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/codeql.yml/badge.svg?branch=main&event=push)](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/codeql.yml)
 [![SecOps: DAST Dynamic Scan](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/dast.yml/badge.svg?branch=main&event=push)](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/dast.yml)
@@ -15,6 +15,7 @@ This project demonstrates secure user authentication, email verification workflo
 <img width="1861" height="991" alt="image" src="https://github.com/user-attachments/assets/6adfad9f-3bb0-4740-a4a4-8cefd49dfcc6" />
 
 ---
+</p>
 
 ## 📊 Database Architecture
 
@@ -59,24 +60,30 @@ erDiagram
 
 ---
 
-##🟢 Technical Quality Assurance (QA & SecOps)
+## 🟢 Technical Quality Assurance (QA & SecOps)
 
-**What do the badges at the beginning of this project mean?**
+<p align="justify"> **What do the badges at the top of this project signify?**
 To ensure **Auth Mailer API** meets banking-grade standards, I have implemented 4 automated workflows (Pipelines) that run on every code change:
 
 1. **Continuous Integration (CI - Jest):** Runs functional tests to ensure registration, login, and email delivery work perfectly.
 2. **Static Security (SAST - CodeQL):** A professional-grade scanner that looks for hidden vulnerabilities in the code (such as potential data theft or SQL injections).
 3. **Dynamic Security (DAST - OWASP ZAP):** A "simulated attack" on the live server to verify there are no open backdoors.
 4. **Contract Validation (Postman/Newman):** Verifies that the communication between the server and the app is always accurate and error-free.
+</p>
 
 - **Green Badge (Passing):** The code has passed all 4 layers of auditing and is 100% safe for use.
 - **Red Badge (Failing):** The system detected an error or risk and automatically blocked the update to protect users.
 
   ✅ **Unit Testing:** Implemented with **Jest**.
+  
   ✅ **Security Audit:** Automated via **CodeQL**.
+  
   ✅ **Vulnerability Scanning:** Performed using **OWASP ZAP**.
+  
   ✅ **API Testing:** Validated with **Newman (Postman CLI)**.
+  
   ✅ **DoS Protection:** Implemented through **Rate Limiting**.
+  
   ✅ **Continuous Deployment:** Automated via **Render** webhooks.
 
 ---
@@ -146,6 +153,8 @@ npm test
 ---
 
 ## 💻🚀 Tech Stack
+</br>
+<div align="center">
 
 | Frontend      | Backend       | Deployment | Database       | Security & Testing |
 |---------------|---------------|------------|----------------|--------------------|
@@ -155,10 +164,13 @@ npm test
 | Bootstrap     | Morgan        |            |                | OWASP ZAP (DAST)   |
 | Bootswatch    | CORS          |            |                | Newman (Postman CLI) |
 
----
+</br>
+</div>
 
 ## 📁 API Endpoints
-
+</br>
+<div align="center">
+    
 ### Public Endpoints
 | Method | Endpoint                | Function |
 |--------|-------------------------|---------|
@@ -182,9 +194,13 @@ npm test
 | POST   | `/users/reset_password/:code`  | Reset password with code |
 
 ---
+</br>
+</div>
 
 ## 🗂️ API Models
-
+</br>
+<div align="center">
+    
 ### User
 | Field       | Description |
 |-------------|-------------|
@@ -205,6 +221,8 @@ npm test
 | user_id| Associated user |
 
 ---
+</br>
+</div>
 
 ## 🧪 Test Coverage
 
@@ -417,13 +435,17 @@ npm run dev
 
 ## 🎨Author
 Developed as part of the Node.js & Backend module, with the goal of consolidating skills in authentication, email workflows, frontend–backend integration, cloud deployment, and professional documentation as part of a fullstack project.
+</br>
+</br>
 
 🔽 **Versión en Español** 🔽
+</br>
+</br>
 
-## 📧 Proyecto Fullstack: Autenticación y Verificación por Email <br/> <br/> <p align="right">[![Continuous Integration (CI/CD) Tests](https://img.shields.io/badge/Pipeline-Integración%20Continua%20(CI)-FFFFFF?style=for-the-badge&logo=postgresql&logoColor=003366&labelColor=FFFDD0)](https://github.com/Clic-stack/Auth-Mailer-API/actions)</p> <br/> <p align="right">[![Pruebas de Integración de Escenario Real](https://img.shields.io/badge/Pruebas-Integración%20de%20Escenario%20Real-FFD700?style=for-the-badge&logo=postgresql&logoColor=FFD700&labelColor=000000)](https://github.com/Clic-stack/Auth-Mailer-API/actions)</p> 
+## <p align="center">📧 Proyecto Fullstack: Autenticación y Verificación por Email</p> <br/> <p align="center">[![SecOps: Análisis CodeQL](https://img.shields.io/badge/Análisis-CodeQL--SecOps-F5F5F5?style=for-the-badge&logo=postgresql&logoColor=black&labelColor=A9A9A9)](https://github.com/Clic-stack/Auth-Mailer-API/actions)[![SecOps: Escaneo Dinámico DAST](https://img.shields.io/badge/Escaneo-DAST%20Dinámico--SecOps-003366?style=for-the-badge&logo=postgresql&logoColor=FFFFFF&labelColor=000033)](https://github.com/Clic-stack/Auth-Mailer-API/actions) [![Pruebas de Integración Reales](https://img.shields.io/badge/Pruebas-Integración%20Real-FFD700?style=for-the-badge&logo=postgresql&logoColor=FFD700&labelColor=010B13)](https://github.com/Clic-stack/Auth-Mailer-API/actions) [![Validación de Contrato API: Postman](https://img.shields.io/badge/Validación-Contrato%20API--Postman-50C878?style=for-the-badge&logo=postgresql&logoColor=E5E5E5&labelColor=006400)](https://github.com/Clic-stack/Auth-Mailer-API/actions)[![Pruebas de Integración Continua (CI/CD)](https://img.shields.io/badge/Pruebas-Integración%20Continua--CI-FFFFFF?style=for-the-badge&logo=postgresql&logoColor=003366&labelColor=FFFDD0)](https://github.com/Clic-stack/Auth-Mailer-API/actions)
+</p> 
 
-
-> [!TIP]
+> [!TIP] <p align="justify">
 >  Nota para Configuración Rápida: Este proyecto incluye variables de entorno e instrucciones de configuración en el archivo `.env.example` para entornos de desarrollo y pruebas, (recuerda que todos los valores deben corresponder a tus propias credenciales). Esto facilita un despliegue rápido y garantiza que la suite de pruebas funcione de inmediato (out-of-the-box) sin configuraciones de seguridad adicionales.
 [![Auth Mailer API CI/CD](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/ci.yml/badge.svg?branch=main&event=push)](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/ci.yml)
 [![SecOps: CodeQL Analysis](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/codeql.yml/badge.svg?branch=main&event=push)](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/codeql.yml)
@@ -436,6 +458,7 @@ Este proyecto implementa flujos seguros de autenticación de usuarios, verificac
 <img width="1861" height="991" alt="image" src="https://github.com/user-attachments/assets/6adfad9f-3bb0-4740-a4a4-8cefd49dfcc6" />
 
 ---
+</p>
 
 ## 🌐 Despliegue
 
@@ -454,24 +477,31 @@ Este proyecto implementa flujos seguros de autenticación de usuarios, verificac
 
 ---
 
-##🟢 Garantía de Calidad Técnica y Seguridad (QA & SecOps)
+## 🟢 Garantía de Calidad Técnica y Seguridad (QA & SecOps)
 
-**¿Qué significan los distintivos (badges) al inicio de este proyecto?**
+<p align="justify"> **¿Qué significan los distintivos (badges) al inicio de este proyecto?**
 Para garantizar que **Auth Mailer API** cumpla con estándares de nivel bancario, he implementado 4 flujos de trabajo automatizados (Pipelines) que se ejecutan en cada cambio de código:
 
 1. **Integración Continua (CI - Jest):** Ejecuta pruebas funcionales para asegurar que el registro, el login y el envío de correos funcionen perfectamente.
 2. **Seguridad Estática (SAST - CodeQL):** Un escáner de nivel profesional que busca vulnerabilidades ocultas en el código (como posibles robos de datos o inyecciones SQL).
 3. **Seguridad Dinámica (DAST - OWASP ZAP):** Un "ataque simulado" al servidor en vivo para verificar que no existan puertas traseras abiertas.
 4. **Validación de Contrato (Postman/Newman):** Verifica que la comunicación entre el servidor y la aplicación sea siempre exacta y sin errores de datos.
+   
+</p>
 
 - **Distintivo Verde (Passing):** El código ha superado las 4 capas de auditoría y es 100% seguro para su uso.
 - **Distintivo Rojo (Failing):** El sistema detectó un error o riesgo y bloqueó la actualización automáticamente para proteger a los usuarios.
 
   ✅ **Pruebas Unitarias:** Implementadas con Jest.
+  
   ✅ **Auditoría de Seguridad:** Automatizada con CodeQL.
+  
   ✅ **Escaneo de Vulnerabilidades:** Realizado con OWASP ZAP.
+  
   ✅ **Pruebas de API:** Validadas con Newman (Postman CLI).
+  
   ✅ **Protección DoS:** Implementada mediante Rate Limiting.
+  
   ✅ **Despliegue Continuo:** Automatizado mediante **webhooks de Render**.
 
 ---
@@ -537,7 +567,7 @@ Este proyecto fue diseñado para:
 
 ## 🛡️ Seguridad y Control de Calidad
 
-Este proyecto sigue un enfoque SecOps mediante pipelines automatizados:
+<p align="justify"> Este proyecto sigue un enfoque SecOps mediante pipelines automatizados:
 
 - **SAST (Pruebas de Seguridad de Aplicaciones Estáticas):** Análisis continuo del código mediante **CodeQL** para detectar vulnerabilidades (Inyección SQL, XSS, etc.).
 - **DAST (Pruebas de Seguridad de Aplicaciones Dinámicas):** Escaneo activo del servidor de producción en vivo utilizando **OWASP ZAP**.
@@ -545,14 +575,16 @@ Este proyecto sigue un enfoque SecOps mediante pipelines automatizados:
 - **Limitación de Tasa (Rate Limiting):** Middleware implementado para mitigar ataques **DoS** (Denegación de Servicio) y de **Fuerza Bruta**.
   
 ---
+</p>
 
 ## 🧪 Suite de Pruebas Profesionales (CI/CD)
-La confiabilidad de **Auth-Mailer-API** está respaldada por un flujo de trabajo de pruebas automatizadas. Utilizando **Jest y Supertest**, el proyecto implementa **9 pruebas estratégicas** que cubren:
+<p align="justify"> La confiabilidad de **Auth-Mailer-API** está respaldada por un flujo de trabajo de pruebas automatizadas. Utilizando **Jest y Supertest**, el proyecto implementa **9 pruebas estratégicas** que cubren:
 
 - **Flujo de Autenticación:** Validación de inicio de sesión seguro, generación de tokens JWT y cifrado de contraseñas.
 - **Ciclo de Vida del Usuario:** Operaciones CRUD completas para la gestión de usuarios y actualizaciones de perfil.
 - **Lógica de Verificación:** Garantizar que los códigos de verificación se generen y procesen correctamente.
 - **Flujo Automatizado:** Cada `push` o `pull request` activa el pipeline de **GitHub Actions**, asegurando la estabilidad del código antes del despliegue.
+</p>
   
 Para ejecutar las pruebas localmente:
 ```bash
@@ -563,6 +595,8 @@ npm test
 ---
 
 ## 💻🚀 Stack Tecnológico
+</br>
+<div align="center">
 
 | Frontend      | Backend       | Despliegue | Base de Datos  | Pruebas y Seguridad |
 |---------------|---------------|------------|----------------|--------------------|
@@ -573,9 +607,13 @@ npm test
 | Bootswatch    | CORS          |            |                | Newman (Postman CLI) |
 
 ---
+</br>
+</div>
 
 ## 📁 Endpoints de API
-
+</br>
+<div align="center">
+    
 ### Endpoints Públicos
 | Método | Endpoint                | Función |
 |--------|-------------------------|---------|
@@ -599,10 +637,14 @@ npm test
 | POST   | `/users/reset_password/:code`  | Cambiar contraseña con el código |
 
 ---
+</br>
+</div>
 
 ## 🗂️ Modelos de la API
-
-### Uusuario
+</br>
+<div align="center">
+    
+### Usuario
 | Campo       | Descripción |
 |-------------|-------------|
 | id          | Llave Primaria |
@@ -622,6 +664,8 @@ npm test
 | user_id| Usuario Asociado |
 
 ---
+</br>
+</div>
 
 ## 🧪 Cobertura de Test
 
@@ -829,7 +873,7 @@ npm run dev
 ## 🚀 Hoja de Ruta Futura (Data & MLOps)
 
 - **Pipeline ETL:** Integración para el análisis de datos históricos de inicio de sesión con el fin de detectar patrones anómalos.
-- **Seguridad Predictiva:** Implementación de un modelo de **Machine Learning** para calificar los riesgos de intentos de inicio de sesión basados en geolocalización y frecuencia.
+- **Seguridad Predictiva:** Implementación de un modelo de **Machine Learning** o ** *scoring de riesgo* ** para inicios de sesión basado en geolocalización y frecuencia.
 - **Dockerización:** Contenedorización de todo el stack tecnológico para permitir un escalado orquestado.
 
 --
