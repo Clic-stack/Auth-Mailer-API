@@ -3,7 +3,8 @@ import store from '../reduxStore/store';
 import { showNotification } from '../shared/Notification/notificationSlice';
 
 const axios = axiosOriginal.create({
-    baseURL: import.meta.env.VITE_API_URL
+    baseURL: import.meta.env.VITE_API_URL,
+    timeout: 15000 // Le damos 15 segundos para que Render despierte y el mailer responda
 })
 
 axios.interceptors.request.use(function (config) {
