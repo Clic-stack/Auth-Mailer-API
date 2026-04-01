@@ -3,12 +3,25 @@ import { env } from '../config/env.js'
 
 // Creamos el transportador con la configuración de Gmail
 const transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true, // true para puerto 465, false para otros
+  auth: {
+    user: env.EMAIL,
+    pass: env.GOOGLE_APP_PASSWORD,
+  },
+  tls: {
+    rejectUnauthorized: false // Esto ayuda a evitar bloqueos de certificados en Render
+  }
+});
+
+/*const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: env.EMAIL,
     pass: env.GOOGLE_APP_PASSWORD, // Aquí irá tu código de 16 letras
   },
-});
+});*/
 
 export const sendEmail = async ({ to, subject, html }) => {
   const mailOptions = {
