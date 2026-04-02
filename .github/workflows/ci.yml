@@ -51,4 +51,4 @@ jobs:
           GOOGLE_APP_PASSWORD: ${{ secrets.GOOGLE_APP_PASSWORD }}
           EMAIL: ${{ secrets.EMAIL }}
           NODE_ENV: test
-        run: NODE_OPTIONS='--experimental-vm-modules' npm test
+        run: npm test
