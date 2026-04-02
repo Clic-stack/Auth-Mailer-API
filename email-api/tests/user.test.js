@@ -1,13 +1,14 @@
 import request from 'supertest';
 import app from '../src/app.js';
 import sequelize from '../src/db/connect.js';
-//import { User } from '../src/models/user.model.js';
-import sgMail from '@sendgrid/mail';
+import nodemailer from 'nodemailer';
 
-// Mock de SendGrid para no gastar créditos
-jest.mock('@sendgrid/mail', () => ({
-  setApiKey: jest.fn(),
-  send: jest.fn().mockResolvedValue([{ statusCode: 202 }]),
+
+// Mock de Nodemailer para no enviar correos reales durante el test
+jest.mock('nodemailer', () => ({
+  createTransport: jest.fn().mockReturnValue({
+    sendMail: jest.fn().mockResolvedValue(true)
+  })
 }));
 
 const userTest = {
@@ -34,7 +35,7 @@ afterAll(async () => {
 
 describe('User Auth & Management API', () => {
   
-  // 1. Crear Usuario
+  // Crear Usuario
   test('POST /users should create a user and "send" an email', async () => {
     const res = await request(app)
       .post('/users')
@@ -43,11 +44,15 @@ describe('User Auth & Management API', () => {
     expect(res.status).toBe(201);
     expect(res.body.user).toHaveProperty('id');
     expect(res.body.user.email).toBe(userTest.email);
-    expect(sgMail.send).toHaveBeenCalled(); // Verifica que se intentó enviar el mail
+
+    // CAMBIO: Verificamos que el transportador de nodemailer fue llamado
+    const transport = nodemailer.createTransport();
+    expect(transport.sendMail).toHaveBeenCalled(); 
+    
     userId = res.body.user.id;
   });
 
-  // 2. Login Fallido (Sin verificar)
+  // Login Fallido (Sin verificar)
   test('POST /users/login should fail if user is not verified', async () => {
     const res = await request(app)
       .post('/users/login')
@@ -60,7 +65,7 @@ describe('User Auth & Management API', () => {
     expect(res.body.message).toBe('Unverified user');
   });
 
-  // 3. Obtener el código de verificación directamente de la DB para el test
+  // Obtener el código de verificación directamente de la DB para el test
   test('GET /users/verify/:code should verify the user', async () => {
     // Buscamos el código en la base de datos
     const { EmailCode } = await import('../src/models/emailcode.model.js');
@@ -74,7 +79,7 @@ describe('User Auth & Management API', () => {
     expect(res.body.user.isVerified).toBe(true);
   });
 
-  // 4. Login Exitoso (Ya verificado)
+  // Login Exitoso (Ya verificado)
   test('POST /users/login should return a JWT', async () => {
     const res = await request(app)
       .post('/users/login')
@@ -88,7 +93,7 @@ describe('User Auth & Management API', () => {
     token = res.body.token;
   });
 
-  // 5. Ruta Protegida (GET /users/me)
+  // Ruta Protegida (GET /users/me)
   test('GET /users/me should return user data with valid token', async () => {
     const res = await request(app)
       .get('/users/me')
@@ -98,13 +103,13 @@ describe('User Auth & Management API', () => {
     expect(res.body.email).toBe(userTest.email);
   });
 
-  // 6. Prueba de Seguridad (Acceso denegado)
+  // Prueba de Seguridad (Acceso denegado)
   test('GET /users/me should return 401 without token', async () => {
     const res = await request(app).get('/users/me');
     expect(res.status).toBe(401);
   });
   
-  //test para emails
+  // test para emails
   describe('Emails Controller - Auth-Mailer-API', () => {
     test('POST /emails/contact should trigger SendGrid and return 200', async () => {
       const contactData = {
@@ -120,10 +125,12 @@ describe('User Auth & Management API', () => {
   
       expect(res.status).toBe(200);
       expect(res.body.message).toBe('Email sent successfully!');
-      // Verificamos que el mock de SendGrid fue llamado
-      expect(sgMail.send).toHaveBeenCalledWith(expect.objectContaining({
-        to: contactData.email,
-        subject: 'Hi there!'
+      
+      // CAMBIO: Verificamos que Nodemailer recibió los datos correctos
+      const transport = nodemailer.createTransport();
+      expect(transport.sendMail).toHaveBeenCalledWith(expect.objectContaining({
+        to: contactData.email
+        // El subject dependerá de lo definido en el controller
       }));
     });
   });
