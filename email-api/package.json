@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "node --watch --env-file=.env src/server.js",
     "start": "node src/server.js",
-    "test": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' jest --no-cache --detectOpenHandles --forceExit"
+     "test": "jest --detectOpenHandles --forceExit"
   },
   "type": "module",
   "dependencies": {
