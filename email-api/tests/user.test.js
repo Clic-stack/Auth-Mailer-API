@@ -2,7 +2,7 @@ import request from 'supertest';
 import app from '../src/app.js';
 import sequelize from '../src/db/connect.js';
 import nodemailer from 'nodemailer';
-const { EmailCode } = await import('../src/models/emailcode.model.js');
+import { EmailCode } from '../src/models/emailcode.model.js';
 
 
 // Mock de Nodemailer para no enviar correos reales durante el test
