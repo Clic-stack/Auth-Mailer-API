@@ -1,11 +1,6 @@
 import nodemailer from 'nodemailer' // Se cambia la librería
 import { env } from '../config/env.js'
-import createDOMPurify from 'dompurify'; // Librería para limpiar HTML
-import { JSDOM } from 'jsdom';           // Necesaria para que dompurify funcione en Node
-
-// Configuración del limpiador
-const window = new JSDOM('').window;
-const DOMPurify = createDOMPurify(window);
+import DOMPurify from 'isomorphic-dompurify'; // Esta librería ya trae su propio DOM interno
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
@@ -21,7 +16,7 @@ const transporter = nodemailer.createTransport({
 });
 
 export const sendEmail = async ({ to, subject, html }) => {
-  // LIMPIEZA: Sanitizamos el HTML antes de enviarlo
+  // Ahora DOMPurify funciona directamente sin configurar nada más
   const cleanHtml = DOMPurify.sanitize(html);
 
   const mailOptions = {
