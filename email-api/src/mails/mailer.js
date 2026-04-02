@@ -1,5 +1,11 @@
 import nodemailer from 'nodemailer' // Se cambia la librería
 import { env } from '../config/env.js'
+import createDOMPurify from 'dompurify'; // Librería para limpiar HTML
+import { JSDOM } from 'jsdom';           // Necesaria para que dompurify funcione en Node
+
+// Configuración del limpiador
+const window = new JSDOM('').window;
+const DOMPurify = createDOMPurify(window);
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
@@ -15,18 +21,20 @@ const transporter = nodemailer.createTransport({
 });
 
 export const sendEmail = async ({ to, subject, html }) => {
+  // LIMPIEZA: Sanitizamos el HTML antes de enviarlo
+  const cleanHtml = DOMPurify.sanitize(html);
+
   const mailOptions = {
     from: env.EMAIL,
     to,
     subject,
-    html
+    html: cleanHtml // Usamos la versión limpia
   }
 
   try {
     await transporter.sendMail(mailOptions);
-    console.log("Email sent via Gmail App Password to:", to);
+    console.log("Email sent safely to:", to);
   } catch (err) {
     console.error("Gmail/Nodemailer error:", err.message);
-    // Importante: No lanzamos el error (throw) para que el registro del usuario en el controller no se detenga si el mail falla.
   }
 }
