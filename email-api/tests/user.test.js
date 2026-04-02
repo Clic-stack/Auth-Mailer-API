@@ -2,6 +2,7 @@ import request from 'supertest';
 import app from '../src/app.js';
 import sequelize from '../src/db/connect.js';
 import nodemailer from 'nodemailer';
+const { EmailCode } = await import('../src/models/emailcode.model.js');
 
 
 // Mock de Nodemailer para no enviar correos reales durante el test
@@ -67,8 +68,6 @@ describe('User Auth & Management API', () => {
 
   // Obtener el código de verificación directamente de la DB para el test
   test('GET /users/verify/:code should verify the user', async () => {
-    // Buscamos el código en la base de datos
-    const { EmailCode } = await import('../src/models/emailcode.model.js');
     const codeObj = await EmailCode.findOne({ where: { userId } });
     verificationCode = codeObj.code;
 
@@ -138,7 +137,6 @@ describe('User Auth & Management API', () => {
   // test para emailcode
   describe('EmailCode Model Logic', () => {
     test('Should create and store a verification code linked to a user', async () => {
-      const { EmailCode } = await import('../src/models/emailcode.model.js');
       
       // Usamos el userId que generamos en el test de creación de usuario anterior
       const newCode = await EmailCode.create({
@@ -151,7 +149,7 @@ describe('User Auth & Management API', () => {
     });
   
     test('Should fail if code is null (Database Constraint)', async () => {
-      const { EmailCode } = await import('../src/models/emailcode.model.js');
+      //const { EmailCode } = await import('../src/models/emailcode.model.js');
       
       try {
         await EmailCode.create({ userId: userId }); // Falta el campo 'code'
