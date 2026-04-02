@@ -296,30 +296,6 @@ describe('User Auth & Management API', () => {
       }));
     });
   });
-
-  /*
-    const { EmailCode } = await import('../src/models/emailcode.model.js');
-      
-      // Usamos el userId que generamos en el test de creación de usuario anterior
-      const newCode = await EmailCode.create({
-        code: 'verification-test-code-999',
-        userId: userId 
-      });
-  
-      expect(newCode.code).toBe('verification-test-code-999');
-      expect(newCode.userId).toBe(userId);
-
-      test('Should fail if code is null (Database Constraint)', async () => {
-      const { EmailCode } = await import('../src/models/emailcode.model.js');
-      
-      try {
-        await EmailCode.create({ userId: userId }); // Falta el campo 'code'
-      } catch (error) {
-        // Sequelize debería lanzar un error de validación
-        expect(error.name).toBe('SequelizeValidationError');
-      }
-    });
-  */
   
   // test para emailcode
   describe('EmailCode Model Logic', () => {
@@ -331,10 +307,11 @@ describe('User Auth & Management API', () => {
         code: 'verification-test-code-999',
         userId: userId 
       })
+      
+      expect(newCode.code).toBe('verification-test-code-999')
+      expect(newCode.userId).toBe(userId)
     });
 
-    expect(newCode.code).toBe('verification-test-code-999')
-    expect(newCode.userId).toBe(userId)
 
     test('Should fail if code is null (Database Constraint)', async () => {
       const { EmailCode } = await import('../src/models/emailcode.model.js')
