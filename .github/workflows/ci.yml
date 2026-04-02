@@ -37,9 +37,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
+          #cache: 'npm'
           # Aquí también ajustamos la ruta del lock file
-          cache-dependency-path: email-api/package-lock.json
+          #cache-dependency-path: email-api/package-lock.json
 
       - name: Install dependencies
         run: npm install
