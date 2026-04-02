@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer' // Se cambia la librería
 import { env } from '../config/env.js'
-//import DOMPurify from 'isomorphic-dompurify'; // Esta librería ya trae su propio DOM interno
+import DOMPurify from 'isomorphic-dompurify'; // Esta librería ya trae su propio DOM interno
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
@@ -17,13 +17,13 @@ const transporter = nodemailer.createTransport({
 
 export const sendEmail = async ({ to, subject, html }) => {
   // Ahora DOMPurify funciona directamente sin configurar nada más
-  //const cleanHtml = DOMPurify.sanitize(html);
+  const cleanHtml = DOMPurify.sanitize(html);
 
   const mailOptions = {
     from: env.EMAIL,
     to,
     subject,
-    html //: cleanHtml // Usamos la versión limpia
+    html: cleanHtml // Usamos la versión limpia
   }
 
   try {
