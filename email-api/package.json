@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "node --watch --env-file=.env src/server.js",
     "start": "node src/server.js",
-    "test": "jest --detectOpenHandles --forceExit"
+    "test": "NODE_OPTIONS='--experimental-vm-modules' jest --detectOpenHandles --forceExit"
   },
   "type": "module",
   "dependencies": {
@@ -28,5 +28,14 @@
     "dotenv": "^17.3.1",
     "jest": "^30.3.0",
     "supertest": "^7.2.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.(t|j)sx?$": "@swc/jest"
+    },
+    "transformIgnorePatterns": [
+      "/node_modules/(?!(dompurify|jsdom|@exodus/bytes)/)"
+    ]
   }
 }
