@@ -48,7 +48,7 @@ jobs:
         env:
           DATABASE_URL: postgres://user_test:password_test@localhost:5432/auth_mailer_test
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
-          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          GOOGLE_APP_PASSWORD: ${{ secrets.GOOGLE_APP_PASSWORD }}
           EMAIL: ${{ secrets.EMAIL }}
           NODE_ENV: test
         run: npm test
