@@ -1,16 +1,16 @@
-import 'dotenv/config'; // Esto cargará el archivo .env de la raíz
+import 'dotenv/config';
 
 export default {
   testEnvironment: 'node',
+  // ESTA LÍNEA ES LA CLAVE:
+  extensionsToTreatAsEsm: ['.js'], 
   transform: {
     "^.+\\.(t|j)sx?$": "@swc/jest",
   },
   transformIgnorePatterns: [
-    "/node_modules/(?!(dompurify|jsdom|@exodus/bytes)/)"
+    "/node_modules/(?!(dompurify|jsdom|@exodus/bytes|html-encoding-sniffer|encoding-lite)/)"
   ],
-  
   moduleNameMapper: {
     '^(\\.{1,2}/.*)\\.js$': '$1',
   },
-  // Aseguramos que cargue el setup si fuera necesario
 };
