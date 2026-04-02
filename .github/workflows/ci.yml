@@ -6,7 +6,6 @@ on:
   pull_request:
     branches: [ main, master ]
 
-# Esto le dice a GitHub que entre a la carpeta email-api para ejecutar todo
 defaults:
   run:
     working-directory: email-api
@@ -38,18 +37,20 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-          # Aquí también ajustamos la ruta del lock file
           cache-dependency-path: email-api/package-lock.json
 
       - name: Install dependencies
-        run: npm install
-        #run: npm ci
+        # 'npm ci' es más rápido y seguro en pipelines que 'npm install'
+        run: npm ci
 
       - name: Run Tests
         env:
+          # Inyectamos la URL de la base de datos del servicio de arriba
           DATABASE_URL: postgres://user_test:password_test@localhost:5432/auth_mailer_test
-          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          SECRET_KEY: ${{ secrets.SECRET_KEY || 'test_secret_key' }}
           GOOGLE_APP_PASSWORD: ${{ secrets.GOOGLE_APP_PASSWORD }}
           EMAIL: ${{ secrets.EMAIL }}
           NODE_ENV: test
+          # Forzamos que Node reconozca los módulos experimentales en el pipeline
+          NODE_OPTIONS: "--experimental-vm-modules"
         run: npm test

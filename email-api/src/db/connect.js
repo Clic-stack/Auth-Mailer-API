@@ -1,7 +1,11 @@
 import { Sequelize } from 'sequelize'
 import { env } from '../config/env.js'
+import 'dotenv/config' 
 
-const sequelize = new Sequelize(env.DATABASE_URL || 'postgres://localhost:5432/test_db', {
+// Si env.DATABASE_URL está vacío, Sequelize lanza el error de "password must be a string"
+const dbUrl = env.DATABASE_URL || process.env.DATABASE_URL;
+
+const sequelize = new Sequelize(dbUrl, {
   dialect: 'postgres',
   logging: false,
   dialectOptions: env.NODE_ENV === 'production' ? {
@@ -12,11 +16,4 @@ const sequelize = new Sequelize(env.DATABASE_URL || 'postgres://localhost:5432/t
   } : {} // En desarrollo/test local a veces no necesitas SSL
 })
 
-export const connectDB = async () => {
-  await sequelize.authenticate()
-  console.log('Conexión a la base de datos establecida correctamente')
-  await sequelize.sync({ alter: false, force: false })
-  console.log('Tablas sincronizadas correctamente')
-}
-
-export default sequelize
+export default sequelize;
