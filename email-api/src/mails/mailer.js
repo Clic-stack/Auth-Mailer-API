@@ -3,10 +3,10 @@ import { env } from '../config/env.js'
 import DOMPurify from 'isomorphic-dompurify'; // Esta librería ya trae su propio DOM interno
 
 const transporter = nodemailer.createTransport({
-  pool: true, // Reutiliza la conexión (más eficiente en Render)
   host: "smtp.gmail.com",
   port: 465,
   secure: true, // true para puerto 465, false para otros
+  pool: true, // Reutiliza la conexión (más eficiente en Render)
   family: 4,
   auth: {
     user: env.EMAIL,
@@ -14,7 +14,8 @@ const transporter = nodemailer.createTransport({
   },
   tls: {
     rejectUnauthorized: false, // Esto ayuda a evitar bloqueos de certificados en Render
-    servername: "smtp.gmail.com"
+    servername: "smtp.gmail.com",
+    minVersion: 'TLSv1.2'
   },
   connectionTimeout: 20000, // 20 segundos de espera para conectar
   greetingTimeout: 10000,   // 10 segundos para el saludo inicial

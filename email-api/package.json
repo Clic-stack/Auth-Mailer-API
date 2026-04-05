@@ -2,9 +2,9 @@
   "name": "api-express",
   "version": "1.0.0",
   "scripts": {
-    "dev": "node --watch --env-file=.env src/server.js",
-    "start": "node src/server.js",
-    "test": "node --experimental-vm-modules -r dotenv/config node_modules/jest/bin/jest.js --no-cache --detectOpenHandles --forceExit"
+    "dev": "node --watch --dns-result-order=ipv4first --env-file=.env src/server.js",
+    "start": "node --dns-result-order=ipv4first src/server.js",
+    "test": "node --dns-result-order=ipv4first --experimental-vm-modules -r dotenv/config node_modules/jest/bin/jest.js --no-cache --detectOpenHandles --forceExit"
   },
   "type": "module",
   "dependencies": {
