@@ -4,6 +4,8 @@ export const env = {
   ENV,
   PORT: process.env.PORT || 3000,
   DATABASE_URL: process.env.DATABASE_URL || '',
+  SMTP_HOST: process.env.SMTP_HOST || '',
+  SMTP_PORT: process.env.SMTP_PORT || '',
   EMAIL: process.env.EMAIL || '',
   GOOGLE_APP_PASSWORD: process.env.GOOGLE_APP_PASSWORD || '',
   SECRET_KEY: process.env.SECRET_KEY || '',
