@@ -4,8 +4,8 @@ import DOMPurify from 'isomorphic-dompurify'; // Esta librería ya trae su propi
 
 const transporter = nodemailer.createTransport({
   pool: true, // Reutiliza la conexión (más eficiente en Render)
-  host: env.SMTP_HOST || "smtp.gmail.com", // Usa la variable de Render o el host de Gmail
-  port: parseInt(env.SMTP_PORT) || 587,    // Usa el 587 que pusiste en Render
+  host: "74.125.141.108", 
+  port: 587,    
   secure: false, // true para puerto 465, false para otros
   family: 4,
   auth: {
