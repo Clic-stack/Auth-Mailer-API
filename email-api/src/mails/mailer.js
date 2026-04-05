@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
   },
   tls: {
     rejectUnauthorized: false, // Esto ayuda a evitar bloqueos de certificados en Render
-    servername: "smtp.gmail.com",
+    servername: "smtp-relay.brevo.com",
     minVersion: 'TLSv1.2'
   },
   connectionTimeout: 40000, // Aumentamos a 40 segundos

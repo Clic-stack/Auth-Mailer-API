@@ -4,10 +4,10 @@ export const env = {
   ENV,
   PORT: process.env.PORT || 3000,
   DATABASE_URL: process.env.DATABASE_URL || '',
-  SMTP_HOST: process.env.SMTP_HOST || '',
-  SMTP_PORT: process.env.SMTP_PORT || '',
+  SMTP_HOST: process.env.SMTP_HOST || 'smtp-relay.brevo.com', // Valor por defecto
+  SMTP_PORT: process.env.SMTP_PORT || '587',
   EMAIL: process.env.EMAIL || '',
-  GOOGLE_APP_PASSWORD: process.env.GOOGLE_APP_PASSWORD || '',
+  GOOGLE_APP_PASSWORD: process.env.GOOGLE_APP_PASSWORD || '', // Aquí irá API Key de Brevo
   SECRET_KEY: process.env.SECRET_KEY || '',
   EXPIRE_IN: process.env.EXPIRE_IN || '1d'
 }
