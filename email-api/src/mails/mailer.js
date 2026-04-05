@@ -13,11 +13,12 @@ const transporter = nodemailer.createTransport({
     pass: env.GOOGLE_APP_PASSWORD,
   },
   tls: {
-    rejectUnauthorized: false // Esto ayuda a evitar bloqueos de certificados en Render
+    rejectUnauthorized: false, // Esto ayuda a evitar bloqueos de certificados en Render
+    servername: "smtp.gmail.com"
   },
-  connectionTimeout: 10000, // 10 segundos de espera para conectar
-  greetingTimeout: 5000,   // 5 segundos para el saludo inicial
-  socketTimeout: 15000     // 15 segundos de inactividad antes de cerrar
+  connectionTimeout: 20000, // 20 segundos de espera para conectar
+  greetingTimeout: 10000,   // 10 segundos para el saludo inicial
+  socketTimeout: 30000     // 30 segundos de inactividad antes de cerrar
 });
 
 export const sendEmail = async ({ to, subject, html }) => {
@@ -40,3 +41,12 @@ export const sendEmail = async ({ to, subject, html }) => {
     throw err; // ¡CRÍTICO! Si no lanzas el error, el controller piensa que todo salió bien
   }
 }
+
+// Verifica la conexión al iniciar el servidor
+transporter.verify((error, success) => {
+  if (error) {
+    console.error("❌ Error de conexión SMTP (IPv4 Check):", error.message);
+  } else {
+    console.log("✅ Servidor de correos listo para enviar (IPv4 forzado)");
+  }
+});
