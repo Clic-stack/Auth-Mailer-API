@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
   },
   tls: {
     rejectUnauthorized: false, // Esto ayuda a evitar bloqueos de certificados en Render
-    servername: "smtp-relay.brevo.com",
+    servername: env.SMTP_HOST,
     minVersion: 'TLSv1.2'
   },
   connectionTimeout: 40000, // Aumentamos a 40 segundos
@@ -38,7 +38,7 @@ export const sendEmail = async ({ to, subject, html }) => {
     console.log("Email sent safely to:", to);
     return info; // Es importante retornar algo para que el test lo vea
   } catch (err) {
-    console.error("Gmail/Nodemailer error:", err.message);
-    throw err; // ¡CRÍTICO! Si no lanzas el error, el controller piensa que todo salió bien
+    console.error("Mailer Error:", err.message); // <-- Limpiamos el nombre "Gmail"
+    throw err;
   }
 }
