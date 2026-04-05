@@ -3,10 +3,10 @@ import { env } from '../config/env.js'
 import DOMPurify from 'isomorphic-dompurify'; // Esta librería ya trae su propio DOM interno
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true, // true para puerto 465, false para otros
   pool: true, // Reutiliza la conexión (más eficiente en Render)
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false, // true para puerto 465, false para otros
   family: 4,
   auth: {
     user: env.EMAIL,
