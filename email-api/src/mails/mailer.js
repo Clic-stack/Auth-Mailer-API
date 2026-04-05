@@ -17,9 +17,9 @@ const transporter = nodemailer.createTransport({
     servername: "smtp.gmail.com",
     minVersion: 'TLSv1.2'
   },
-  connectionTimeout: 20000, // 20 segundos de espera para conectar
-  greetingTimeout: 10000,   // 10 segundos para el saludo inicial
-  socketTimeout: 30000     // 30 segundos de inactividad antes de cerrar
+  connectionTimeout: 40000, // Aumentamos a 40 segundos
+  greetingTimeout: 30000,   // 30 segundos para el saludo
+  socketTimeout: 60000     // 60 segundos de socket abierto
 });
 
 export const sendEmail = async ({ to, subject, html }) => {
