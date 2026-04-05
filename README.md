@@ -2,11 +2,11 @@
 </p> 
 
 > [!TIP] <p align="justify">
-> **Service Status:** The API is optimized for Render's free tier, automatically managing cold starts and network constraints through a robust transport configuration. <br/> <p align="center">
+> **Service Status:** The API is optimized for Render's free tier, automatically managing cold starts and network constraints through a robust transport configuration. <br/>
 [![Auth Mailer API CI/CD](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/ci.yml/badge.svg?branch=main&event=push)](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/ci.yml)
 [![SecOps: CodeQL Analysis](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/codeql.yml/badge.svg?branch=main&event=push)](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/codeql.yml)
 [![SecOps: DAST Dynamic Scan](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/dast.yml/badge.svg?branch=main&event=push)](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/dast.yml)
-[![API Contract: Postman Validation](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/postman-validation.yml/badge.svg?branch=main&event=push)](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/postman-validation.yml)</p>
+[![API Contract: Postman Validation](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/postman-validation.yml/badge.svg?branch=main&event=push)](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/postman-validation.yml)
 
 
 
@@ -462,11 +462,11 @@ Developed by **Clio Salgado** as part of the Node.js & Backend module, with the 
 </p> 
 
 > [!TIP] <p align="justify">
-> **Estado del Servicio:** La API se encuentra optimizada para el plan gratuito de Render, gestionando automáticamente el cold start y las limitaciones de red mediante una configuración de transporte robusta.<br/> <p align="center">
+> **Estado del Servicio:** La API se encuentra optimizada para el plan gratuito de Render, gestionando automáticamente el cold start y las limitaciones de red mediante una configuración de transporte robusta.<br/> 
 [![Auth Mailer API CI/CD](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/ci.yml/badge.svg?branch=main&event=push)](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/ci.yml)
 [![SecOps: CodeQL Analysis](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/codeql.yml/badge.svg?branch=main&event=push)](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/codeql.yml)
 [![SecOps: DAST Dynamic Scan](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/dast.yml/badge.svg?branch=main&event=push)](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/dast.yml)
-[![API Contract: Postman Validation](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/postman-validation.yml/badge.svg?branch=main&event=push)](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/postman-validation.yml)</p>
+[![API Contract: Postman Validation](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/postman-validation.yml/badge.svg?branch=main&event=push)](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/postman-validation.yml)
 
 Una aplicación fullstack profesional construida con React, Express, Sequelize y PostgreSQL. 
 Este proyecto implementa flujos seguros de autenticación de usuarios, verificación de cuenta por correo electrónico, recuperación de contraseñas y una arquitectura lista para despliegue.
