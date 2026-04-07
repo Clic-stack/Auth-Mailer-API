@@ -2,7 +2,7 @@
 </p> 
 
 > [!TIP] <p align="justify">
-> **Service Status:** The API is optimized for Render's free tier, automatically managing cold starts and network constraints through a robust transport configuration. <br/> <p align="center">
+> To prevent `Connection Timeout` errors on Render's free tier, port **2525** must be used instead of 587. Additionally, the server should be executed with the `--dns-result-order=ipv4first` flag to ensure DNS resolution compatibility with email services. This project uses Brevo for email delivery. <br/> <p align="center">
 [![Auth Mailer API CI/CD](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/ci.yml/badge.svg?branch=main&event=push)](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/ci.yml)
 [![SecOps: CodeQL Analysis](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/codeql.yml/badge.svg?branch=main&event=push)](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/codeql.yml)
 [![SecOps: DAST Dynamic Scan](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/dast.yml/badge.svg?branch=main&event=push)](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/dast.yml)
@@ -263,9 +263,9 @@ The following endpoints are tested:
 ## 📄 Scripts (package.json)
 ```bash
 "scripts": {
-  "dev": "node --watch --env-file=.env src/server.js",
-  "start": "node src/server.js",
-  "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --detectOpenHandles --forceExit"
+  "dev": "node --watch --dns-result-order=ipv4first --env-file=.env src/server.js",
+    "start": "node --dns-result-order=ipv4first src/server.js",
+    "test": "node --dns-result-order=ipv4first --experimental-vm-modules -r dotenv/config node_modules/jest/bin/jest.js --no-cache --detectOpenHandles --forceExit"
 }
 ```
 
@@ -412,10 +412,12 @@ npm install
 NODE_ENV=development
 PORT=4000
 DATABASE_URL=postgres://user:password@localhost:5432/emails_db
-EMAIL=
-GOOGLE_APP_PASSWORD=
+EMAIL=Brevo SMTP User ID
+GOOGLE_APP_PASSWORD=Brevo SMTP Master Password
 SECRET_KEY=
 EXPIRE_IN=1d
+SMTP_HOST=smtp-relay.brevo.com
+SMTP_PORT=Use 2525 for Render
 ```
 
 5. Run the server in development mode:
@@ -462,7 +464,7 @@ Developed by **Clio Salgado** as part of the Node.js & Backend module, with the 
 </p> 
 
 > [!TIP] <p align="justify">
-> **Estado del Servicio:** La API se encuentra optimizada para el plan gratuito de Render, gestionando automáticamente el cold start y las limitaciones de red mediante una configuración de transporte robusta.<br/> <p align="center">
+> Para evitar errores de `Connection Timeout` en el plan gratuito de Render, se debe utilizar el puerto **2525** en lugar del 587. Además, es necesario ejecutar el servidor con el flag `--dns-result-order=ipv4first` para asegurar una resolución de DNS compatible con los servicios de correo. Este proyecto usa Brevo para el envío de correos.<br/> <p align="center">
 [![Auth Mailer API CI/CD](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/ci.yml/badge.svg?branch=main&event=push)](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/ci.yml)
 [![SecOps: CodeQL Analysis](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/codeql.yml/badge.svg?branch=main&event=push)](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/codeql.yml)
 [![SecOps: DAST Dynamic Scan](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/dast.yml/badge.svg?branch=main&event=push)](https://github.com/Clic-stack/Auth-Mailer-API/actions/workflows/dast.yml)
@@ -719,9 +721,9 @@ Los siguientes endpoints fueron testeados
 ## 📄 Scripts (package.json)
 ```bash
 "scripts": {
-  "dev": "node --watch --env-file=.env src/server.js",
-  "start": "node src/server.js",
-  "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --detectOpenHandles --forceExit"
+ "dev": "node --watch --dns-result-order=ipv4first --env-file=.env src/server.js",
+    "start": "node --dns-result-order=ipv4first src/server.js",
+    "test": "node --dns-result-order=ipv4first --experimental-vm-modules -r dotenv/config node_modules/jest/bin/jest.js --no-cache --detectOpenHandles --forceExit"
 }
 ```
 
@@ -869,10 +871,12 @@ npm install
 NODE_ENV=development
 PORT=4000
 DATABASE_URL=postgres://user:password@localhost:5432/emails_db
-EMAIL=
-GOOGLE_APP_PASSWORD=
+EMAIL=Brevo SMTP User ID
+GOOGLE_APP_PASSWORD=Brevo SMTP Master Password
 SECRET_KEY=
 EXPIRE_IN=1d
+SMTP_HOST=smtp-relay.brevo.com
+SMTP_PORT=Use 2525 for Render
 ```
 
 5. Corre el servidor en modo desarrollo:
